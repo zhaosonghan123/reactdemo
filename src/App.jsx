@@ -1,24 +1,24 @@
 import React from 'react'
-import {Outlet} from 'react-router-dom'
-import { Button, Layout } from 'antd';
-import logoImg from './assets/logo.png'
-const {Sider,Content} = Layout
+import { Outlet } from 'react-router-dom'
+import { Layout } from 'antd';
+import Header from './components/Header';
+import Aside from './components/Aside';
+
+const { Content } = Layout
 
 export default function App() {
   return (
     <div>
       <Layout className="app">
-      <header><img src={logoImg} alt="" /><div className="right">右侧</div></header>
-      <Layout>
-        <Sider>Sider</Sider>
-        <Content>
-          <div>
-            <Outlet/>
+        <Header />
+          <div className="aside">
+          <Aside/>
+            <div className="right">
+              <Outlet />
+            </div>
           </div>
-        </Content>
+        <footer>Respect | Copyright @copy; 2022 Author 你单排吧</footer>
       </Layout>
-      <footer>Respect | Copyright @copy; 2022 Author 你单排吧</footer>
-    </Layout>
     </div>
   )
 }
