@@ -10,7 +10,8 @@
 
 import App from '../App.jsx'
 import Edit from '../pages/Edit'
-import List from '../pages/List'
+import ListList from '../pages/ListList'
+import ListTable from '../pages/ListTable.jsx'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Means from '../pages/Means'
@@ -20,7 +21,8 @@ const BaseRouter = () => (
   <Router >
     <Routes>
       <Route path='/' element={<App/>}>
-        <Route path='/list' element={<List/>}/>
+        <Route path='/listlist' element={<ListList/>}/>
+        <Route path='/listtable' element={<ListTable/>}/>
         <Route path='/edit' element={<Edit/>}/>
         <Route path='/means' element={<Means/>}/>
       </Route> 

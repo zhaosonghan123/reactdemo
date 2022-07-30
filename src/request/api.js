@@ -7,6 +7,9 @@ export const RegisterApi = (params) => {
 }
 
 //登录接口
-export const LoginApi = (params) =>{
+export const LoginApi = (params) => {
   return Request.post('/login',params)
 }
+
+//获取文章列表接口
+export const ArticleListApi = (params) => Request.get('/article',{params})
