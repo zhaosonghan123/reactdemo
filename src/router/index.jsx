@@ -24,6 +24,7 @@ const BaseRouter = () => (
         <Route path='/listlist' element={<ListList/>}/>
         <Route path='/listtable' element={<ListTable/>}/>
         <Route path='/edit' element={<Edit/>}/>
+        <Route path='/edit/:id' element={<Edit/>}/>
         <Route path='/means' element={<Means/>}/>
       </Route> 
       <Route path='/login' element={<Login/>}/>

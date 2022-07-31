@@ -15,12 +15,13 @@ export default function Bread() {
       case '/edit':
         setBreadName('文章编辑'); break;
       case '/means':
-        setBreadName('修改资料');break;
-      default: break;
+        setBreadName('修改资料'); break;
+      default:
+        setBreadName(pathname.includes('/edit') ? '文章编辑' : ''); break;
     }
   }, [pathname])
   return (
-    <Breadcrumb style={{height:'30px',lineHeight:'30px'}}>
+    <Breadcrumb style={{ height: '30px', lineHeight: '30px' }}>
       <Breadcrumb.Item href="/">
         <HomeOutlined />
       </Breadcrumb.Item>

@@ -16,7 +16,7 @@ export default function Aside() {
   useEffect(()=>{
     let key = location.pathname.split('/')[1]
     setDefaultKey(key);
-  },[])
+  },[location.pathname])
 
   function getItem(label, key, icon, children, type) {
     return {

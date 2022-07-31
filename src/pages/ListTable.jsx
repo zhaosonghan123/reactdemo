@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './less/ListTable.less'
 import { Space, Table, Button } from 'antd';
-import { ArticleListApi } from '../request/api';
+import { ArticleListApi} from '../request/api';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom'
 
 function MyTitle(props) {
   return (
@@ -14,6 +15,7 @@ function MyTitle(props) {
 }
 
 export default function ListTable() {
+  const navigate = useNavigate()
   const [arr, setArr] = useState()
   const [pagination, setPagination] = useState({ current: 1, pageSize: 10 ,total: 0})
 
@@ -46,11 +48,9 @@ export default function ListTable() {
 
   const pageChange = (arg) => {
     getArticleList(arg.current,arg.pageSize)
-    console.log(pagination);
   }
 
   useEffect(() => {
-  
     getArticleList(pagination.current,pagination.pageSize)
   }, [])
 
@@ -71,7 +71,7 @@ export default function ListTable() {
       key: 'action',
       render: text => (
         <Space size="middle">
-          <Button type='primary' onClick={() => console.log(text.key)}>编辑</Button>
+          <Button type='primary' onClick={() => navigate('/edit/'+text.key)}>编辑</Button>
           <Button type='primary' danger >删除</Button>
         </Space>
       ),
