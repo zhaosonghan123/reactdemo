@@ -26,7 +26,7 @@ export default function Login() {
           navigate('/')
         }, 1500);
       }else{
-        message.failed(res.message)
+        message.error(res.message)
       }
     })
   };

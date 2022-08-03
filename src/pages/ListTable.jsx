@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './less/ListTable.less'
-import { Space, Table, Button } from 'antd';
-import { ArticleListApi} from '../request/api';
+import { Space, Table, Button, message } from 'antd';
+import { ArticleListApi, ArticleDeleteApi } from '../request/api';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom'
 
@@ -17,6 +17,7 @@ function MyTitle(props) {
 export default function ListTable() {
   const navigate = useNavigate()
   const [arr, setArr] = useState()
+  const [update,setUpdate] = useState(1)
   const [pagination, setPagination] = useState({ current: 1, pageSize: 10 ,total: 0})
 
   const getArticleList = (current, pageSize) => {
@@ -50,9 +51,20 @@ export default function ListTable() {
     getArticleList(arg.current,arg.pageSize)
   }
 
+  const handleDelete = (id) => {
+    ArticleDeleteApi({id}).then(res=>{
+      if(res.errCode===0){
+        message.success(res.message)
+        setUpdate(update+1)
+      }else{
+        message.error(res.message)
+      }
+    })
+  }
+
   useEffect(() => {
     getArticleList(pagination.current,pagination.pageSize)
-  }, [])
+  }, [update])
 
   const columns = [
     {
@@ -72,7 +84,7 @@ export default function ListTable() {
       render: text => (
         <Space size="middle">
           <Button type='primary' onClick={() => navigate('/edit/'+text.key)}>编辑</Button>
-          <Button type='primary' danger >删除</Button>
+          <Button type='primary' danger onClick={ () => handleDelete(text.key)}>删除</Button>
         </Space>
       ),
     },

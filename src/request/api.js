@@ -22,3 +22,12 @@ export const ArticleSearchApi = (params) => Request.get(`/article/${params.id}`)
 
 //重新提交文章
 export const ArticleUpdateApi = (params) => Request.put('/article/update',params)
+
+//删除文章
+export const ArticleDeleteApi = (params) => Request.post('/article/remove',params)
+
+//查询资料
+export const GetUserInfoApi = () => Request.get('/info')
+
+//修改资料
+export const UpdateUserInfoApi = (params) => Request.put('/info',params)

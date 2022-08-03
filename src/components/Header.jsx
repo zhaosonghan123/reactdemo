@@ -4,8 +4,9 @@ import defaultAvatar from '../assets/defaultAvatar.jpeg'
 import { DownOutlined, SmileOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, message, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Header() {
+function Header(props) {
   const navigate = useNavigate()
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('游客')
@@ -25,7 +26,7 @@ export default function Header() {
     if(avatar1){
       setAvatar('http://47.93.114.103:6688/'+avatar1)
     }
-  },[])
+  },[props.myKey])
   const menu = (
     <Menu
       items={[
@@ -68,3 +69,8 @@ export default function Header() {
     </header>
   )
 }
+
+const mapStateToProps = (state) => ({myKey: state.myKey})
+
+
+export default connect(mapStateToProps)(Header)
